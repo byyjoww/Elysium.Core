@@ -1,18 +1,18 @@
 {
-  "name": "com.elysium.core",
-  "displayName": "Elysium.Core",
-  "version": "1.0.0",
-  "unity": "2019.4",
   "author": "Jonathan Aykroyd",
   "description": "Core + utils package necessary for any package using the scriptable object arquitecture. Contains the framework for events, values, savable values, factories and pools, as well as all utility scripts.",
-  "type": "library",
+  "displayName": "Elysium.Core",
   "hideInEditor": false,
+  "name": "com.elysium.core",
   "scopedRegistries": [
-        {
-            "name": "Elysium",
-            "url": "https://github.com/byyjoww/Elysium.Core.git",
-            "scopes": [
-                "com.elysium"
-            ]
-        }
+    {
+      "name": "Elysium",
+      "url": "https://github.com/byyjoww/Elysium.Core.git",
+      "scopes": [
+        "com.elysium"
+      ]
+    }
+  ],
+  "unity": "2019.4",
+  "version": "1.0.0"
 }
