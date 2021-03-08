@@ -5,11 +5,6 @@
   "unity": "2019.4",
   "author": "Jonathan Aykroyd",
   "description": "Core + utils package necessary for any package using the scriptable object arquitecture. Contains the framework for events, values, savable values, factories and pools, as well as all utility scripts.",
-  "repository": {
-    "type": "git",
-    "url": "",
-    "revision": ""
-  },
   "type": "library",
   "hideInEditor": false
 }
