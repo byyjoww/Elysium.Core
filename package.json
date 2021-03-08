@@ -1,5 +1,5 @@
 {
-  "author": "Jonathan Aykroyd",
+  "author": "Elysium Entertainment",
   "description": "Core + utils package necessary for any package using the scriptable object arquitecture. Contains the framework for events, values, savable values, factories and pools, as well as all utility scripts.",
   "displayName": "Elysium.Core",
   "hideInEditor": false,
