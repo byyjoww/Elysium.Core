@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -29,6 +30,33 @@ namespace Elysium.Utils
             }
 
             return false;
+        }
+    }
+
+    static class CanvasTools
+    {
+        public enum CanvasMode { SCREEN_SPACE_CAMERA, SCREEN_SPACE_OVERLAY }
+
+        public static Vector3 GetPositionInCanvas(CanvasMode mode, Vector2 targetPos, Canvas canvas)
+        {
+            if (mode == CanvasMode.SCREEN_SPACE_OVERLAY) { return GetPositionInScreenSpaceOverlayCanvas(targetPos, canvas); }
+            else if (mode == CanvasMode.SCREEN_SPACE_CAMERA) { return GetPositionInScreenSpaceCameraCanvas(targetPos, canvas); }
+
+            throw new System.NotImplementedException("canvas mode not implemented");
+        }
+
+        public static Vector3 GetPositionInScreenSpaceCameraCanvas(Vector2 targetPos, Canvas canvas)
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, targetPos, canvas.worldCamera, out Vector2 pos);
+            var posInCanvas = canvas.transform.TransformPoint(pos);
+            return posInCanvas;
+        }
+
+        public static Vector3 GetPositionInScreenSpaceOverlayCanvas(Vector2 targetPos, Canvas canvas)
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, targetPos, canvas.worldCamera, out Vector2 pos);
+            var posInCanvas = canvas.transform.TransformPoint(pos);
+            return posInCanvas;
         }
     }
 }

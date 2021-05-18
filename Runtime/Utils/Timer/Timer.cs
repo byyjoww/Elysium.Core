@@ -51,7 +51,7 @@ namespace Elysium.Utils.Timers
     [System.Serializable]
     public class TimerInstance
     {
-        public float Time { get; set; } = 0;
+        [field: SerializeField] public float Time { get; set; } = 0;
         public bool IsEnded { get; set; } = false;
         public bool IsPersistent { get; set; } = false;
         public Func<bool> DestroyCondition { get; set; } = default;        

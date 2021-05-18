@@ -8,7 +8,7 @@ namespace Elysium.Utils.Components
     {
         [SerializeField] private float delay = 10f;
 
-        public float Delay 
+        public float Delay
         {
             get => delay;
             set => delay = value;

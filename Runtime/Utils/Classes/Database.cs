@@ -35,6 +35,8 @@ namespace Elysium.Utils
         public ScriptableObject[] Elements => elements;
         [SerializeField] private ScriptableObject[] elements;
 
+        public T[] ElementsAsInterface => elements.Cast<T>().ToArray();
+
         public T GetElementByName(string _name)
         {
             for (int i = 0; i < elements.Length; i++)

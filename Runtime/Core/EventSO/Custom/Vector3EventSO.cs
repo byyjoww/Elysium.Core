@@ -8,7 +8,7 @@ namespace Elysium.Core
 {
 #endif
 
-    [CreateAssetMenu(fileName = "Vector3EventSO", menuName = "Scriptable Objects/Scriptable Events/Complex/Vector3 Event", order = 1)]
+    [CreateAssetMenu(fileName = "Vector3EventSO", menuName = "Scriptable Objects/Scriptable Events/Custom/Vector3 Event", order = 1)]
     public class Vector3EventSO : GenericEventSO<Vector3>
     {
 #if UNITY_EDITOR
