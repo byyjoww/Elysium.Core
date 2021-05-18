@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Elysium.Core
 {
-    [CreateAssetMenu(fileName = "SpriteValueSO", menuName = "Scriptable Objects/Scriptable Value/Complex/Sprite", order = 1)]
+    [CreateAssetMenu(fileName = "SpriteValueSO", menuName = "Scriptable Objects/Value/Sprite", order = 1)]
     public class SpriteValueSO : GenericValueSO<Sprite>
     {
         public override Sprite Value
