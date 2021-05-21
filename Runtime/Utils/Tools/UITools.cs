@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Elysium.Utils
 {
-    static class UITools
+    public static class UITools
     {
         public static bool IsPointerOverUIObject()
         {
