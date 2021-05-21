@@ -2,7 +2,7 @@
 
 namespace Elysium.Utils
 {
-    static class EditorTools
+    public static class EditorTools
     {
         public static bool InEditMode()
         {
