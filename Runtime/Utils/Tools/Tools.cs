@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Elysium.Utils
 {
-    static class Tools
+    public static class Tools
     {
         public static void Invoke(MonoBehaviour _worker, Action _action, float _delay = 0)
         {
