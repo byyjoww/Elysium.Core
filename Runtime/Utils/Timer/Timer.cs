@@ -28,7 +28,7 @@ namespace Elysium.Utils.Timers
             if (activeTimers == null) { activeTimers = new List<TimerInstance>(); }
             timer.IsPersistent = _isPersistent;
             timer.DestroyCondition = _destroyCondition;
-            if (!_isPersistent) { timer.OnTimerEnd += () => activeTimers.Remove(timer); }
+            if (!_isPersistent) { timer.OnEnd += () => activeTimers.Remove(timer); }
             activeTimers.Add(timer);
             return timer;
         }
@@ -56,7 +56,8 @@ namespace Elysium.Utils.Timers
         public bool IsPersistent { get; set; } = false;
         public Func<bool> DestroyCondition { get; set; } = default;        
 
-        public event Action OnTimerEnd;
+        public event Action OnEnd;
+        public event Action OnEndSilent;
         public event Action OnTick;
 
         public TimerInstance()
@@ -86,16 +87,6 @@ namespace Elysium.Utils.Timers
             IsEnded = false;
         }
 
-        public void EndTimer()
-        {
-            this.Time = 0;
-            IsEnded = true;
-        }
-
-        public void ClearOnEnd() => OnTimerEnd = null;
-
-        public void ClearOnTick() => OnTick = null;
-
         public virtual void Tick()
         {
             if (IsEnded) { return; }
@@ -104,12 +95,41 @@ namespace Elysium.Utils.Timers
             Time -= UnityEngine.Time.deltaTime;
             OnTick?.Invoke();
 
-            if (Time <= 0)
-            {
-                Time = 0;
-                IsEnded = true;
-                OnTimerEnd?.Invoke();
-            }
+            if (Time <= 0) { End(); }
         }
+
+        public void End()
+        {
+            Time = 0;
+            IsEnded = true;
+            OnEnd?.Invoke();
+        }
+
+        public void EndSilent()
+        {
+            this.Time = 0;
+            IsEnded = true;
+            OnEndSilent?.Invoke();
+        }
+
+        public void Dispose()
+        {
+            DestroyCondition = () => true;
+        }
+
+        public void ClearOnTick()
+        {
+            OnTick = null;
+        }
+
+        public void ClearOnEnd()
+        {
+            OnEnd = null;
+        }
+
+        public void ClearOnEndSilent()
+        {
+            OnEndSilent = null;
+        }             
     }
 }
