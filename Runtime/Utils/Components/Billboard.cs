@@ -17,6 +17,7 @@ namespace Elysium.Utils.Components
         private Camera cam;
 
         private Transform billboardTransform => transform;
+        public A3DBillboardType Type { get => _billboard; set => _billboard = value; }
 
         private enum UnityUpdatePhase
         {

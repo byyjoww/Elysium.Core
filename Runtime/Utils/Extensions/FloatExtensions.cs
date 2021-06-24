@@ -11,5 +11,10 @@ namespace Elysium.Utils
             float t = (_f - _fromMin) / (_fromMax - _fromMin);
             return Mathf.LerpUnclamped(_toMin, _toMax, t);
         }
+
+        public static bool IsNullOrEmpty(this float[] _array)
+        {
+            return _array == null || _array.Length == 0;
+        }
     }
 }
