@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Elysium.Utils
@@ -66,6 +67,19 @@ namespace Elysium.Utils
             return _value != default;
         }
 
+        public static bool TryGetColor(this Dictionary<string, object> _dictionary, string _key, out Color _value, Color _default = default(Color))
+        {
+            _value = _default;
+            if (_dictionary.TryGetValue(_key, out object obj))
+            {
+                if (ColorUtility.TryParseHtmlString((string)obj, out Color color))
+                {
+                    _value = color;
+                }
+            }
+            return _value != default;
+        }
+
         public static bool TryGetPosition(this Dictionary<string, object> _dictionary, string _key, out Vector3? _value, Vector3? _default = null)
         {
             _value = _default;
@@ -100,6 +114,29 @@ namespace Elysium.Utils
                 {
                     _value = new Quaternion(f1, f2, f3, f4);
                 }
+            }
+            return _value != default;
+        }
+
+        public static bool TryGetDictionary(this Dictionary<string, object> _dictionary, string _key, out Dictionary<string, object> _value, Dictionary<string, object> _default = null)
+        {
+            _value = _default;
+            if (_dictionary.TryGetValue(_key, out object obj))
+            {
+                _value = (obj as Dictionary<object, object>)
+                    .ToDictionary(x => x.Key.ToString(), x => x.Value);
+            }
+            return _value != default;
+        }
+
+        public static bool TryGetDictionaries(this Dictionary<string, object> _dictionary, string _key, out IEnumerable<Dictionary<string, object>> _value, IEnumerable<Dictionary<string, object>> _default = null)
+        {
+            _value = _default;
+            if (_dictionary.TryGetValue(_key, out object obj))
+            {
+                _value = (obj as IEnumerable<object>)
+                    .Cast<Dictionary<object, object>>()
+                    .Select(x => x.ToDictionary(x => x.Key.ToString(), x => x.Value));
             }
             return _value != default;
         }
