@@ -33,7 +33,7 @@ namespace Elysium.Utils
         }
     }
 
-    static class CanvasTools
+    public static class CanvasTools
     {
         public enum CanvasMode { SCREEN_SPACE_CAMERA, SCREEN_SPACE_OVERLAY }
 
