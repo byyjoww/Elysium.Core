@@ -124,7 +124,7 @@ namespace Elysium.Utils
             if (_dictionary.TryGetValue(_key, out object obj))
             {
                 _value = (obj as Dictionary<object, object>)
-                    .ToDictionary(x => x.Key.ToString(), x => x.Value);
+                    .ToDictionary(x => x.Key.ToString(), y => y.Value);
             }
             return _value != default;
         }
@@ -136,7 +136,7 @@ namespace Elysium.Utils
             {
                 _value = (obj as IEnumerable<object>)
                     .Cast<Dictionary<object, object>>()
-                    .Select(x => x.ToDictionary(x => x.Key.ToString(), x => x.Value));
+                    .Select(e => e.ToDictionary(x => x.Key.ToString(), y => y.Value));
             }
             return _value != default;
         }
